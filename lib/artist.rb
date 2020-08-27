@@ -21,13 +21,12 @@ class Artist
         artist
     end
     def add_song(song)
-        if song.artist.name == "Unknown"
+        if !song.artist   
             song.artist = self 
-        else
-            song.artist
         end
-        @songs << song
-        @songs.uniq!
+        if !@songs.include? song  
+            @songs << song
+        end
     end
 
 end
