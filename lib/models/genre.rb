@@ -31,6 +31,9 @@ class Genre
     @songs
   end
   
+  def artists
+    @songs.map{|song| song.artist}.uniq
+  end
   # def artists
   #   Song.all.select do |song|
   #     artist = song.artist if song.genre == self
