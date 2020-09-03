@@ -1,6 +1,6 @@
  class Genre
   
-    extend Findable
+    extend Concerns::Findable
     extend Persistable::ClassMethods
     include Persistable::InstanceMethods
    

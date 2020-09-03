@@ -1,11 +1,12 @@
 
 class Song
   
-  extend Findable 
+  extend Concerns::Findable 
   extend Persistable::ClassMethods
   include Persistable::InstanceMethods
  
   attr_accessor :name
+  
   
   
   def initialize(name)
