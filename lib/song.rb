@@ -4,7 +4,7 @@ class Song
   extend Concerns::Findable 
   extend Persistable::ClassMethods
   include Persistable::InstanceMethods
-  @@all = []
+ 
   attr_accessor :name
   
   
@@ -13,6 +13,9 @@ class Song
     save
   end
   
+  def self.all
+    @@all
+  end
   
     
  
