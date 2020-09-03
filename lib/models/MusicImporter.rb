@@ -8,5 +8,9 @@ class MusicImporter
   def files 
     Dir[@path+"/*.mp3"].map{|f| File.basename(f)}
   end
-
+  
+  def import
+    files.each{|file| Song.create_from_filename(file)}
+  end
+  
 end
