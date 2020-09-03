@@ -27,6 +27,16 @@ class Song
     song
   end
   
+  # def artist=(name)
+  #   name.add_song(self)
+    
+  #   # name.add_song(self)
+  #   # if artist != nil 
+  #   #   # self.artist = artist
+  #   #   artist.name.add_song(self)
+  #   # end
+  
+  # end
   
   
 end
