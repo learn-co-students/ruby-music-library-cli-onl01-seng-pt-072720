@@ -4,8 +4,7 @@ module Concerns::Findable
       all.find{|item| item.name == name}
     end
     
-    def find_or_create_by_name 
+    def find_or_create_by_name(name) 
       find_by_name(name) || create(name)
     end
-    
 end
