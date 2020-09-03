@@ -52,10 +52,11 @@ class Song
     split_name = filename.split(" - ")
     song_artist = split_name[0]
     song_name = split_name[1]
+    song_genre = split_name[2].gsub(".mp3","")
     
-    new_song = self.new(name)
-    new_song.artist = song_artist
-    new_song
+    artist = Artist.find_or_create_by_name(song_artist)
+    genre = Genre.find_or_create_by_name(song_genre)
+    self.new(song_name, artist, genre)
     
   end
   
