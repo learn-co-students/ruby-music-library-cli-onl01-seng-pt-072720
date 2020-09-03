@@ -49,12 +49,17 @@ class MusicLibraryController
 
     def play_song
         puts "Which song number would you like to play?"
-        song_number = gets
+        song_number = gets.strip
         index_number = song_number.to_i - 1 
-        song_to_play = list_songs.map[index_number].split(" ")
-        puts "Playing #{song_to_play[3]} by #{song_to_play[1]}"
-        # ["num.[0]", "song.artist.name[1]", "-[2]", "song.name[3]", "-[4]", "song.genre.name[5]"]
-        # puts "Playing #{song_name} by #{artist_name}"
+        if index_number.between?(0, Song.all.length) 
+            song_to_play = Song.all.sort_by { |s| s.name }[index_number]
+            puts "Playing #{song_to_play.name} by #{song_to_play.artist.name}"
+        end
+        # song_to_play = list_songs[index_number].split(" ")
+        # puts "Playing #{song_to_play[3]} by #{song_to_play[1]}"
+        # # ["num.[0]", "song.artist.name[1]", "-[2]", "song.name[3]", "-[4]", "song.genre.name[5]"]
+        # # puts "Playing #{song_name} by #{artist_name}"
+        # binding.pry
     end
     # binding.pry
 end
