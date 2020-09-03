@@ -6,7 +6,7 @@ class MusicImporter
   end
   
   def files 
-    Dir[@path]
+    Dir[@path+"/*.mp3"].map{|f| File.basename(f)}
   end
 
 end
