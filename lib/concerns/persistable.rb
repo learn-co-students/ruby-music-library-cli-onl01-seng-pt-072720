@@ -8,10 +8,6 @@ end
     
 module ClassMethods
   
-  def self.extended(base)
-    puts "#{base} has been extended by #{self}"
-    base.class_varible_set(:@@all,[])
-  end
   
     def reset_all
       self.all.clear
