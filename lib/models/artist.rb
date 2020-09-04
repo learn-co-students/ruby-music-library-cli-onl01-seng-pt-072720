@@ -3,7 +3,6 @@ require_relative '../../lib/concerns/findable.rb'
 class Artist 
 
   extend Concerns::Findable
-  
 
   attr_accessor :name, :songs, :genre, :song
   
@@ -44,7 +43,6 @@ class Artist
   def genres
     @songs.map{|song| song.genre}.uniq
   end
-  
   
 end
 
