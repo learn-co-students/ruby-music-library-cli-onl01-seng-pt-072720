@@ -1,4 +1,4 @@
-
+require 'pry'
 class Song
   
   extend Concerns::Findable 
@@ -18,7 +18,6 @@ class Song
     if genre != nil
       self.genre = genre
     end
-    save
   end
   
   def self.all
@@ -53,7 +52,22 @@ class Song
     genre.add_song(self)
   end
         
-  
+  def self.new_from_filename(filename)
+    arr = filename.split(" - ")
+    artist_name = arr[0]
+    song_title = arr[1]
+    genre_name = arr[2].delete_suffix!('.mp3')
+    new_artist = Artist.find_or_create_by_name(artist_name)
+    new_genre = Genre.find_or_create_by_name(genre_name)
+    Song.new(song_title, new_artist, new_genre)
+    # ["Thundercat", "For Love I Come", "dance.mp3"]
+# binding.pry
+  end
+
+  def self.create_from_filename(filename)
+    self.new_from_filename(filename).save
+    
+  end
   
  
     

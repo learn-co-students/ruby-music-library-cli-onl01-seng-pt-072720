@@ -12,7 +12,7 @@
   def initialize(name)
     @name = name
     @songs = []
-    save
+    
   end
   
     def self.all
@@ -36,6 +36,10 @@
       if !@songs.include?(song)
         @songs << song
       end
+    end
+
+    def artists
+      songs.collect {|song|song.artist}.uniq
     end
     
   
