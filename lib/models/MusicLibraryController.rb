@@ -75,48 +75,6 @@ class MusicLibraryController
         when 'play song'
           play_song
       end
-      
     end
-      
-      
-    # if input == 'exit'
-    #   exit
-    # else 
-    #   if input == 'list songs'
-    #     list_songs
-    #   elsif input =='list artists'
-    #     list_artists
-    #   elsif input == 'list genres'
-    #     list_genres
-    #   elsif input == 'list artist'
-    #     list_songs_by_artist
-    #   elsif input == 'list genre'
-    #     list_songs_by_genre 
-    #   elsif input == 'play song'
-    #     play_song
-    #   else 
-    #     exit
-    #   end
-    # end
-      
-
-  #   until input = exit do
-      
-  #     case input 
-  #       when 'list songs'
-  #         Song.all.name
-  #       when 'list artists'
-  #         Artist.all.name 
-  #       when 'list genres'
-  #         Genre.all.name 
-  #       when 'play song'
-  #         #play_song 
-  #     end
-  #   end
-  #   #   
-  #   # end
   end 
-  
-  
-  
 end
