@@ -22,6 +22,7 @@ class MusicLibraryController
       puts "What would you like to do?"
        
       def list_songs
+        Song.all.each_with_index{|song, index| puts "#{index+1}. #{song.name}"}
       end 
       
       def list_artists
