@@ -37,7 +37,8 @@ class Song
 
     def genre=(genre)
         @genre = genre
-        self.genre.add_song(self)
+        #self.genre.add_song(self)
+        genre.songs << self if !@genre.songs.include?(self)
     end
 
     #def self.find_by_name(s_name)

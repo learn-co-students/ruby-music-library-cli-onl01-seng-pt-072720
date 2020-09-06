@@ -76,18 +76,29 @@ class MusicLibraryController
         end
     end
 
+    #def play_song
+    #    puts "Which song number would you like to play?"
+    #    s_num = gets.strip
+    #    input = s_num.to_i - 1
+    #    #binding.pry
+    #    if (input >= 0) && (input <= (Song.all.length - 1))
+    #      song_to_play = Song.all.uniq.sort_by{|song| song.name }[input-1]#uniq.sort{|a, b| a.name <=> b.name}
+    #      #binding.pry
+    #      #song = song_list[input-1]
+    #      #name = Artist.all.sort{|a, b| a.name <=> b.name}
+    #      puts "Playing #{song_to_play.name} by #{song_to_play.artist.name}"
+    #    else
+    #        nil
+    #    end
+    #end
+
     def play_song
         puts "Which song number would you like to play?"
-        s_num = gets.strip
-        input = s_num.to_i - 1
-        #binding.pry
-        if input >= 0 && input <= Song.all.length - 1
-          song_to_play = Song.all.uniq.sort_by{|song| song.name }[input-1]#uniq.sort{|a, b| a.name <=> b.name}
-          #song = song_list[input-1]
-          #name = Artist.all.sort{|a, b| a.name <=> b.name}
-          puts "Playing #{song_to_play.name} by #{song_to_play.artist.name}"
-        else
-            nil
+        song_number = gets.strip
+        index_number = song_number.to_i - 1 
+        if index_number.between?(0, Song.all.length-1)
+            song_to_play = Song.all.sort_by { |s| s.name }[index_number]
+            puts "Playing #{song_to_play.name} by #{song_to_play.artist.name}"
         end
     end
 
