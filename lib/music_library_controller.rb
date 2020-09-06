@@ -25,10 +25,10 @@ class MusicLibraryController
             self.list_artists
         when "list genres"
             self.list_genres
-        when "lists artist"
+        when "list artist"
             self.list_songs_by_artist
         when "list genre"
-            self.lists_songs_by_genre
+            self.list_songs_by_genre
         when "play song"
             self.play_song
         when "exit"
@@ -39,18 +39,24 @@ class MusicLibraryController
     end
 
     def list_songs
-        Song.all.sort_by {|a| a.name}.each_with_index do |song, i|
+        Song.all.uniq.sort_by {|a| a.name}.each_with_index do |song, i|
             puts "#{i+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
         end
     end
 
+    # def list_artists
+    #     artists = Artist.all.uniq.sort{|a, b| a.name <=> b.name}
+    #     artists.each_with_index{|artist, i| puts "#{i+1}. #{artist.name}"}
+    # end
+
     def list_artists
-        artists = Artist.all.sort{|a, b| a.name <=> b.name}
-        artists.each_with_index{|artist, i| puts "#{i+1}. #{artist.name}"}
-    end
+        Artist.all.sort{ |a, b| a.name <=> b.name }.each.with_index(1) do |a, i|
+          puts "#{i}. #{a.name}"
+        end
+      end
 
     def list_genres
-        genres = Genre.all.sort{|a, b| a.name <=> b.name}
+        genres = Genre.all.uniq.sort{|a, b| a.name <=> b.name}
         genres.each_with_index{|genre, i| puts "#{i+1}. #{genre.name}"}
     end
 
@@ -70,7 +76,7 @@ class MusicLibraryController
         input = gets.strip
 
         if genre = Genre.find_by_name(input)
-            genre.songs.sort{|a, b| a.name <=> b.name}.each_with_index do |song, i|
+            genre.songs.uniq.sort{|a, b| a.name <=> b.name}.each_with_index do |song, i|
                 puts "#{i+1}. #{song.artist.name} - #{song.name}"
             end
         end
@@ -92,14 +98,25 @@ class MusicLibraryController
     #    end
     #end
 
-    def play_song
+     def play_song
         puts "Which song number would you like to play?"
         song_number = gets.strip
         index_number = song_number.to_i - 1 
-        if index_number.between?(0, Song.all.length-1)
-            song_to_play = Song.all.sort_by { |s| s.name }[index_number]
+        if index_number.between?(0, Song.all.uniq.length-1)
+            song_to_play = Song.all.uniq.sort_by { |s| s.name }[index_number]
+            #song_to_play = Song.all.uniq.sort_by { |s| s.name }[index_number]
             puts "Playing #{song_to_play.name} by #{song_to_play.artist.name}"
         end
     end
+    # def play_song
+    #     puts "Which song number would you like to play?"
+    
+    #     input = gets.strip.to_i
+    #     if (1..Song.all.length).include?(input)
+    #       song = Song.all.sort{ |a, b| a.name <=> b.name }[input - 1]
+    #     end
+    
+    #     puts "Playing #{song.name} by #{song.artist.name}" if song
+    #   end
 
 end
