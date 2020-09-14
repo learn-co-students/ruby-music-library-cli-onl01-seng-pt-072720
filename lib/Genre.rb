@@ -24,8 +24,7 @@ def save
 end
 
 def self.create(name)
-    self.new(name).save
-    self
+    self.new(name).tap {|g| g.save}
 end
 
 def songs

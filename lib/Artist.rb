@@ -1,7 +1,7 @@
    class Artist
    
     extend Concerns::Findable
-    
+
     attr_accessor :name, :song, :genre
 
     @@all = [] 
@@ -24,8 +24,7 @@
     end
 
     def self.create(name)
-        self.new(name).save
-        self
+        self.new(name).tap {|a| a.save}
     end
 
     def songs

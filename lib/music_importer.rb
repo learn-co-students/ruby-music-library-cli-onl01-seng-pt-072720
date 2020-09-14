@@ -1,5 +1,7 @@
+require 'pry'
+
 class MusicImporter
-    
+    attr_accessor :path, :song, :artist, :genre, :musiclibrarycontroller
     @files = []
     
     def initialize(path)
@@ -7,12 +9,16 @@ class MusicImporter
     end
 
     def path
-        @path.split(".")[1]
+        @path
     end
 
     def files
-        Dir.entries(@path).select {|entry| entry.chomp("./spec/fixtures/mp3s")}
+        Dir.entries(@path).select {|entry| entry.end_with?(".mp3")}
     end
 
-
+    def import
+        self.files.each do |filename| 
+            Song.create_from_filename(filename)
+        end 
+    end
 end
